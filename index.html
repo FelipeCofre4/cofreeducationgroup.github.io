@@ -1,0 +1,1037 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>COFRÉ Education Group - Transformando la Educación con Datos</title>
+    <meta name="description" content="Diagnóstico educativo, consultoría en IA y diseño de proyectos educativos basados en neurociencia y datos.">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-dark: #1e3a5f;
+            --primary-blue: #2b7fbf;
+            --primary-light: #5cb3e8;
+            --accent-green: #4db8a8;
+            --text-dark: #2c3e50;
+            --text-light: #6c757d;
+            --bg-light: #f8f9fa;
+            --border-color: #e9ecef;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: #ffffff;
+        }
+
+        /* HEADER Y NAVEGACIÓN */
+        header {
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-blue) 100%);
+            color: white;
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: none;
+            align-items: center;
+            gap: 1rem;
+            cursor: pointer;
+            padding: 0.5rem 0;
+        }
+
+        .logo img {
+            height: 55px;
+            width: auto;
+            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+            background: white;
+            padding: 4px;
+            border-radius: 4px;
+        }
+
+        .logo-text {
+            font-weight: bold;
+            font-size: 1.3rem;
+            letter-spacing: 1px;
+            color: white;
+            display: inline;
+        }
+
+        @media (max-width: 768px) {
+            .logo img {
+                height: 45px;
+            }
+
+            .logo-text {
+                display: none;
+            }
+        }
+
+        nav {
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--accent-green);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* HERO SECTION */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-blue) 50%, var(--accent-green) 100%);
+            color: white;
+            padding: 6rem 2rem;
+            text-align: center;
+            min-height: 600px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero-logo {
+            height: 150px;
+            width: auto;
+            margin-bottom: 2rem;
+            filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.2));
+            animation: slideDown 0.8s ease;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: white;
+            color: var(--primary-dark);
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+            border: none;
+            font-size: 1rem;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        /* SECCIONES GENERALES */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .section {
+            padding: 4rem 2rem;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: var(--primary-dark);
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-blue), var(--accent-green));
+            border-radius: 2px;
+        }
+
+        /* SOBRE NOSOTROS */
+        .about {
+            background-color: var(--bg-light);
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-text h2 {
+            font-size: 2rem;
+            color: var(--primary-dark);
+            margin-bottom: 1.5rem;
+        }
+
+        .about-text p {
+            margin-bottom: 1rem;
+            color: var(--text-light);
+            line-height: 1.8;
+        }
+
+        .highlight {
+            font-weight: 600;
+            color: var(--primary-blue);
+        }
+
+        .about-features {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .feature-item {
+            display: flex;
+            gap: 1rem;
+            align-items: flex-start;
+        }
+
+        .feature-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--primary-blue), var(--accent-green));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        .feature-text h3 {
+            font-size: 1.1rem;
+            color: var(--primary-dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .feature-text p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        /* SERVICIOS */
+        .services {
+            background-color: white;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: white;
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 2.5rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-blue), var(--accent-green));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s ease;
+        }
+
+        .service-card:hover {
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transform: translateY(-5px);
+        }
+
+        .service-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .service-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary-blue), var(--accent-green));
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .service-card h3 {
+            font-size: 1.4rem;
+            color: var(--primary-dark);
+            margin-bottom: 1rem;
+        }
+
+        .service-card p {
+            color: var(--text-light);
+            margin-bottom: 1rem;
+            line-height: 1.7;
+        }
+
+        .service-list {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .service-list li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        .service-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--accent-green);
+            font-weight: bold;
+        }
+
+        /* PORTAFOLIO / CASOS DE ÉXITO */
+        .portfolio {
+            background-color: var(--bg-light);
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .portfolio-item {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .portfolio-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .portfolio-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--accent-green) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+        }
+
+        .portfolio-content {
+            padding: 2rem;
+        }
+
+        .portfolio-content h3 {
+            color: var(--primary-dark);
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        .portfolio-content p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .portfolio-tag {
+            display: inline-block;
+            background-color: var(--bg-light);
+            color: var(--primary-blue);
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            margin-right: 0.5rem;
+        }
+
+        /* CONTACTO */
+        .contact {
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-blue) 100%);
+            color: white;
+        }
+
+        .contact-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: start;
+        }
+
+        .contact-info h2 {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .contact-item {
+            margin-bottom: 2rem;
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .contact-detail h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .contact-detail p {
+            opacity: 0.9;
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group label {
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            padding: 0.8rem;
+            border: none;
+            border-radius: 5px;
+            font-family: inherit;
+            font-size: 1rem;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(77, 184, 168, 0.3);
+        }
+
+        .submit-btn {
+            background-color: var(--accent-green);
+            color: white;
+            padding: 1rem;
+            border: none;
+            border-radius: 5px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            font-size: 1rem;
+        }
+
+        .submit-btn:hover {
+            background-color: #3fa098;
+        }
+
+        /* FOOTER */
+        footer {
+            background-color: var(--primary-dark);
+            color: white;
+            padding: 3rem 2rem 1rem;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+            text-align: left;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            color: var(--accent-green);
+        }
+
+        .footer-section p,
+        .footer-section a {
+            font-size: 0.95rem;
+            opacity: 0.85;
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: var(--accent-green);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 2rem;
+            opacity: 0.7;
+        }
+
+        /* ANIMACIONES */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            nav {
+                display: none;
+                position: absolute;
+                top: 60px;
+                left: 0;
+                right: 0;
+                background: var(--primary-dark);
+                flex-direction: column;
+                gap: 0;
+                padding: 1rem 0;
+            }
+
+            nav.active {
+                display: flex;
+            }
+
+            nav a {
+                padding: 1rem 2rem;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            }
+
+            .header-container {
+                flex-wrap: wrap;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-wrapper {
+                grid-template-columns: 1fr;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .footer-section {
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero {
+                padding: 3rem 1rem;
+                min-height: auto;
+            }
+
+            .hero-logo {
+                height: 100px;
+                margin-bottom: 1.5rem;
+            }
+
+            .hero h1 {
+                font-size: 1.5rem;
+            }
+
+            .section {
+                padding: 2rem 1rem;
+            }
+
+            .container {
+                padding: 0 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <img src="Logo.png" alt="COFRÉ Education Group">
+                <span class="logo-text">COFRÉ</span>
+            </div>
+            <nav id="nav">
+                <a href="#about">Sobre Nosotros</a>
+                <a href="#services">Servicios</a>
+                <a href="#portfolio">Casos de Éxito</a>
+                <a href="#contact">Contacto</a>
+            </nav>
+            <button class="mobile-menu-btn" id="mobile-menu-btn">☰</button>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="hero-content">
+            <img src="Logo.png" alt="COFRÉ Education Group" class="hero-logo">
+            <h1>La educación cambia vidas. Los datos te muestran cómo.</h1>
+            <p>Diagnóstico educativo, consultoría en IA y diseño de proyectos basados en neurociencia y evidencia científica</p>
+            <a href="#contact" class="cta-button">Solicita una Consulta</a>
+        </div>
+    </section>
+
+    <!-- SOBRE NOSOTROS -->
+    <section class="about section" id="about">
+        <div class="container">
+            <h2 class="section-title">Sobre Nosotros</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>COFRÉ Education Group</h2>
+                    <p>Somos una consultoría educativa especializada en <span class="highlight">transformar datos en decisiones pedagógicas fundamentadas</span>.</p>
+                    <p>Nuestro equipo combina formación en psicología, neurociencia y análisis de datos para acompañar a instituciones educativas en su evolución.</p>
+                    <p>Creemos que <span class="highlight">la educación basada en evidencia</span> es más efectiva, equitativa y sostenible.</p>
+
+                    <div class="about-features">
+                        <div class="feature-item">
+                            <div class="feature-icon">📊</div>
+                            <div class="feature-text">
+                                <h3>Fundadas en Datos</h3>
+                                <p>Análisis riguroso de SIMCE, asistencia y bienestar escolar</p>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">🧠</div>
+                            <div class="feature-text">
+                                <h3>Basadas en Neurociencia</h3>
+                                <p>Proyectos educativos coherentes con cómo aprende el cerebro</p>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">🤖</div>
+                            <div class="feature-text">
+                                <h3>Conectadas con el Futuro</h3>
+                                <p>Implementación responsable de IA en procesos pedagógicos</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div style="background: linear-gradient(135deg, var(--primary-blue) 0%, var(--accent-green) 100%); border-radius: 10px; padding: 3rem; color: white; display: flex; flex-direction: column; justify-content: center; text-align: center; min-height: 400px;">
+                    <div style="font-size: 4rem; margin-bottom: 1rem;">🎓</div>
+                    <h3 style="font-size: 1.3rem; margin-bottom: 1rem;">Felipe Ignacio Cofré González</h3>
+                    <p style="opacity: 0.9; margin-bottom: 1rem;">Fundador y Gerente General</p>
+                    <div style="border-top: 1px solid rgba(255,255,255,0.3); padding-top: 1rem;">
+                        <p style="font-size: 0.9rem; opacity: 0.85;">Psicólogo | Diplomado en Neuropsicología | Especialista en análisis educativo</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICIOS -->
+    <section class="services section" id="services">
+        <div class="container">
+            <h2 class="section-title">Nuestros Servicios</h2>
+            <div class="services-grid">
+                <!-- Servicio 1 -->
+                <div class="service-card">
+                    <div class="service-icon">📊</div>
+                    <h3>Diagnóstico Educativo con Datos</h3>
+                    <p>Análisis integral del estado de aprendizaje, convivencia y bienestar de tu institución.</p>
+                    <ul class="service-list">
+                        <li>Análisis de SIMCE y registros internos</li>
+                        <li>Dashboard visual actualizable</li>
+                        <li>Comparativa con establecimientos similares</li>
+                        <li>Plan de acción priorizado</li>
+                        <li>Presentación directiva (60 min)</li>
+                    </ul>
+                </div>
+
+                <!-- Servicio 2 -->
+                <div class="service-card">
+                    <div class="service-icon">🤖</div>
+                    <h3>Consultoría en IA para Colegios</h3>
+                    <p>Integración responsable y pedagógica de inteligencia artificial en el aula.</p>
+                    <ul class="service-list">
+                        <li>Diagnóstico de adopción tecnológica</li>
+                        <li>Mapeo de oportunidades de IA</li>
+                        <li>Política institucional de IA</li>
+                        <li>Capacitación docente</li>
+                        <li>Implementación piloto y evaluación</li>
+                    </ul>
+                </div>
+
+                <!-- Servicio 3 -->
+                <div class="service-card">
+                    <div class="service-icon">🎯</div>
+                    <h3>Diseño de Proyectos Educativos</h3>
+                    <p>Proyectos educativos con fundamento científico y coherentes con tu comunidad.</p>
+                    <ul class="service-list">
+                        <li>PEI, PME, PIE, convivencia escolar</li>
+                        <li>Fundamentados en neurociencia</li>
+                        <li>Alineados con MINEDUC</li>
+                        <li>Participativo con tu equipo</li>
+                        <li>Instrumentos de seguimiento</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PORTAFOLIO / CASOS DE ÉXITO -->
+    <section class="portfolio section" id="portfolio">
+        <div class="container">
+            <h2 class="section-title">Casos de Éxito</h2>
+            <div class="portfolio-grid">
+                <div class="portfolio-item">
+                    <div class="portfolio-image">📈</div>
+                    <div class="portfolio-content">
+                        <h3>Mejora de SIMCE con Datos</h3>
+                        <p>Implementación de análisis de resultados SIMCE que identificó brechas específicas por nivel.</p>
+                        <span class="portfolio-tag">Diagnóstico</span>
+                        <span class="portfolio-tag">Datos</span>
+                    </div>
+                </div>
+
+                <div class="portfolio-item">
+                    <div class="portfolio-image">🧠</div>
+                    <div class="portfolio-content">
+                        <h3>Diseño de PME 2026</h3>
+                        <p>Reformulación participativa de Plan de Mejoramiento Educativo basado en neurociencia.</p>
+                        <span class="portfolio-tag">PME</span>
+                        <span class="portfolio-tag">Proyectos</span>
+                    </div>
+                </div>
+
+                <div class="portfolio-item">
+                    <div class="portfolio-image">🤖</div>
+                    <div class="portfolio-content">
+                        <h3>Piloto IA en Aula</h3>
+                        <p>Implementación piloto de herramientas de IA generativa con docentes de nivel medio.</p>
+                        <span class="portfolio-tag">IA</span>
+                        <span class="portfolio-tag">Capacitación</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACTO -->
+    <section class="contact section" id="contact">
+        <div class="container">
+            <h2 class="section-title" style="color: white;">Contáctanos</h2>
+            <div class="contact-wrapper">
+                <div class="contact-info">
+                    <h2>Hablemos sobre tu institución</h2>
+                    <p style="margin-bottom: 2rem; opacity: 0.95;">Estamos disponibles para consultas, propuestas personalizadas y acompañamiento en tu transformación educativa.</p>
+
+                    <div class="contact-item">
+                        <div class="contact-icon">📞</div>
+                        <div class="contact-detail">
+                            <h3>Teléfono</h3>
+                            <p><a href="tel:+56934416999" style="color: white; text-decoration: none;">+56 9 3441 6999</a></p>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <div class="contact-icon">✉️</div>
+                        <div class="contact-detail">
+                            <h3>Correo</h3>
+                            <p><a href="mailto:felipe@cofreeducationgroup.cl" style="color: white; text-decoration: none;">felipe@cofreeducationgroup.cl</a></p>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <div class="contact-icon">🌐</div>
+                        <div class="contact-detail">
+                            <h3>Sitio Web</h3>
+                            <p>www.cofreeducationgroup.cl</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <div class="contact-icon">📍</div>
+                        <div class="contact-detail">
+                            <h3>Ubicación</h3>
+                            <p>Padre Hurtado, Región Metropolitana, Chile</p>
+                        </div>
+                    </div>
+                </div>
+
+                <form class="contact-form" onsubmit="handleFormSubmit(event)">
+                    <div class="form-group">
+                        <label for="name">Nombre</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="institution">Institución</label>
+                        <input type="text" id="institution" name="institution">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Correo Electrónico</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone">Teléfono</label>
+                        <input type="tel" id="phone" name="phone">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="service">Servicio de Interés</label>
+                        <select id="service" name="service" style="padding: 0.8rem; border: none; border-radius: 5px; font-family: inherit; font-size: 1rem;">
+                            <option value="">Selecciona un servicio...</option>
+                            <option value="diagnostico">Diagnóstico Educativo</option>
+                            <option value="ia">Consultoría en IA</option>
+                            <option value="proyectos">Diseño de Proyectos</option>
+                            <option value="otro">Otro</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Mensaje</label>
+                        <textarea id="message" name="message" required></textarea>
+                    </div>
+
+                    <button type="submit" class="submit-btn">Enviar Consulta</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>COFRÉ Education Group</h3>
+                <p>Transformando la educación a través de datos, neurociencia e innovación.</p>
+            </div>
+
+            <div class="footer-section">
+                <h3>Servicios</h3>
+                <a href="#services">Diagnóstico Educativo</a>
+                <a href="#services">Consultoría en IA</a>
+                <a href="#services">Diseño de Proyectos</a>
+            </div>
+
+            <div class="footer-section">
+                <h3>Información</h3>
+                <p><strong>RUT:</strong> 78.396.911-4</p>
+                <p><strong>Teléfono:</strong> +56 9 3441 6999</p>
+                <p><strong>Email:</strong> felipe@cofreeducationgroup.cl</p>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 COFRÉ Education Group SpA | Felipe Cofré González</p>
+            <p style="margin-top: 0.5rem; font-size: 0.85rem;">RUT: 78.396.911-4</p>
+        </div>
+    </footer>
+
+    <script>
+        // MENÚ MÓVIL
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const nav = document.getElementById('nav');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            nav.classList.toggle('active');
+        });
+
+        // Cerrar menú al hacer clic en un enlace
+        nav.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                nav.classList.remove('active');
+            });
+        });
+
+        // ANIMACIÓN AL SCROLL
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.service-card, .portfolio-item, .feature-item').forEach(el => {
+            observer.observe(el);
+        });
+
+        // MANEJO DEL FORMULARIO
+        function handleFormSubmit(event) {
+            event.preventDefault();
+
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const institution = document.getElementById('institution').value;
+            const phone = document.getElementById('phone').value;
+            const service = document.getElementById('service').value;
+            const message = document.getElementById('message').value;
+
+            // Crear URL de WhatsApp
+            const whatsappMessage = `Hola, soy ${name} de ${institution || 'una institución'}.%0A%0AServicio de interés: ${service}%0A%0A${message}%0A%0AContacto: ${email} | ${phone || 'No proporcionado'}`;
+            const whatsappUrl = `https://wa.me/56934416999?text=${whatsappMessage}`;
+
+            // O enviar por correo
+            const mailtoLink = `mailto:felipe@cofreeducationgroup.cl?subject=Consulta de ${name}&body=${encodeURIComponent(`Nombre: ${name}\nInstitución: ${institution}\nTeléfono: ${phone}\nServicio: ${service}\n\nMensaje:\n${message}`)}`;
+
+            // Abrir WhatsApp (preferencia)
+            window.open(whatsappUrl, '_blank');
+
+            // Limpiar formulario
+            event.target.reset();
+            alert('¡Gracias por tu interés! Te contactaremos pronto.');
+        }
+
+        // SCROLL SUAVE
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (href !== '#') {
+                    e.preventDefault();
+                    const target = document.querySelector(href);
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
